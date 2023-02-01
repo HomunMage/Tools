@@ -1,6 +1,9 @@
 # Whisper
 
-## install
+## Request
+python  >=3.7, < 3.11
+
+## install (GPU ver)
 ```
 pip install git+https://github.com/openai/whisper.git 
 pip install --upgrade --no-deps --force-reinstall git+https://github.com/openai/whisper.git
