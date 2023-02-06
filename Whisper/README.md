@@ -12,7 +12,9 @@ pip cache purge
 pip install torch -f https://download.pytorch.org/whl/torch_stable.html
 ```
 
-## use whisper
+## use whisper (command ver)
+need to source activate script
+
 ```
 <<WhisperInstallPath>>\Scripts\Activate.ps1
 whisper intput.m4a --language zh --model medium > test1.txt
