@@ -2,13 +2,13 @@
 
 Subtitle with dual-lang
 
-## Methods:
-* [Translate](./Translate.md)
-* [Whisper](./Whisper.md)
-
-##
-Real-example:
-https://www.youtube.com/watch?v=XhEk5MEVfcw
+* Requirement:
+  * [Whisper](./Whisper.md)
+  * [CTranslate2](./CTranslate2.md)
+* usage:
+  * convert.ps1
+* Real-example:
+  * https://www.youtube.com/watch?v=XhEk5MEVfcw
 
 ## Flow:
 ```mermaid
