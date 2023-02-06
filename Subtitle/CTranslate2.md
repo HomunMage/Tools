@@ -1,5 +1,6 @@
 # CTranslate2
 
+pip install sacremoses ctranslate2
 
 ## Example
 * requirement
