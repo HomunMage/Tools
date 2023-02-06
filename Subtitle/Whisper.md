@@ -1,6 +1,4 @@
 # Whisper 
-
-# Whisper
 * Requirement
   * python  >=3.7, < 3.11
   * ffmpeg
