@@ -1,8 +1,11 @@
 # Subtitle 
 
+## Methods:
+* [Translate](./Translate.md)
+* [Whisper](./Whisper.md)
+
+
 ## Flow:
-
-
 ```mermaid
 graph TD;
     Video(Video File)--> ffmpeg;
@@ -13,8 +16,3 @@ graph TD;
     CTranslate2 --> dual(dual lang);
 
 ```
-
-
-## See Methods:
-* [Translate](./Translate.md)
-* [Whisper](./Whisper.md)
