@@ -1,6 +1,6 @@
 # CTranslate2
 
-pip install sacremoses ctranslate2
+pip install sacremoses ctranslate2 sentencepiece
 
 ## Example
 * requirement
