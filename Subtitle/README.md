@@ -1,9 +1,14 @@
 # Subtitle 
 
+Subtitle with dual-lang
+
 ## Methods:
 * [Translate](./Translate.md)
 * [Whisper](./Whisper.md)
 
+##
+Real-example:
+https://www.youtube.com/watch?v=XhEk5MEVfcw
 
 ## Flow:
 ```mermaid
