@@ -1,7 +1,9 @@
-# Whisper
+# Whisper 
 
-## Request
-python  >=3.7, < 3.11
+# Whisper
+* Requirement
+  * python  >=3.7, < 3.11
+  * ffmpeg
 
 ## install (GPU ver)
 ```
@@ -20,8 +22,8 @@ need to source activate script
 whisper intput.m4a --language zh --model medium > test1.txt
 ```
 
-## convert video to srt
-convert.ps1
+## use whisper (py ver)
+python convert.py
 
 ## 其他參考資料
 https://www.youtube.com/watch?v=YhLyeOJIoGE

@@ -4,7 +4,7 @@ from datetime import timedelta
 
 model = whisper.load_model("medium", "cuda")
 result = model.transcribe("output.m4a")
-srt_filename = "output.srt"
+srt_filename = "input.srt"
 
 def to_srt(result):
     segments = result["segments"]
@@ -20,7 +20,8 @@ def to_srt(result):
 
 srt_text = to_srt(result)
 
+
 with open(srt_filename, "w", encoding="utf-8") as srt_file:
     srt_file.write(srt_text)
 
-print("SRT file saved as output.srt")
+print("SRT file saved as" + srt_filename)
