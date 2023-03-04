@@ -1,6 +1,8 @@
 # CTranslate2
 
-pip install sacremoses ctranslate2 sentencepiece
+```
+pip install pip install transformers[torch] sacremoses ctranslate2
+```
 
 ## Example
 * requirement
