@@ -1,7 +1,8 @@
 Windows Registry Editor Version 5.00
 
 [HKEY_CLASSES_ROOT\Directory\Background\shell\PowerShellHere]
-@="Open PowerShell window here"
+"MUIVerb"="Open PowerShell"
+"Icon"="C:\\package\\Microsoft\\powershell.ico"
 
 [HKEY_CLASSES_ROOT\Directory\Background\shell\PowerShellHere\command]
 @="powershell.exe -noexit -command Set-Location -LiteralPath '%V'"
