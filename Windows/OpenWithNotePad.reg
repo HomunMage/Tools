@@ -1,0 +1,8 @@
+Windows Registry Editor Version 5.00
+
+[HKEY_CLASSES_ROOT\*\shell\OpenWithNotepad]
+@="Open with Notepad"
+"Icon"="C:\\Windows\\system32\\notepad.exe"
+
+[HKEY_CLASSES_ROOT\*\shell\OpenWithNotepad\command]
+@="C:\\Windows\\system32\\notepad.exe \"%1\""
