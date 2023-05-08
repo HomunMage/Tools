@@ -1,4 +1,4 @@
-# Markdonw To Docx
+# Markdown To Docx
 
 convert mermaid to png and then replace to ```![]()``` in markdown  
 convert markdown to html then convert to docx  
