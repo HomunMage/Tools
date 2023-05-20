@@ -20,7 +20,7 @@ notepad.exe $profile
 ```
 
 ```
-C:\PosetMage\Package\miniconda3\shell\condabin\conda-hook.ps1
+<path of miniconda3>\shell\condabin\conda-hook.ps1
 conda activate py310
 ```
 
