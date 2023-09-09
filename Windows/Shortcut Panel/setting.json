@@ -1,0 +1,27 @@
+{
+  "basesize" : 20,
+  "shortcuts" :
+  [
+    {
+      "name": "Shortcut1",
+      "path": "%SystemRoot%\\system32\\WindowsPowerShell\\v1.0\\powershell.exe",
+      "icon": "powershell.png",
+      "position": [1,1],
+      "size": 1
+    },
+    {
+      "name": "Shortcut2",
+      "path": "C:\\Windows\\explorer.exe",
+      "icon": "explorer.png",
+      "position": [1,2],
+      "size": 2
+    },
+    {
+        "name": "Shortcut2",
+        "path": "C:\\Program Files\\Mozilla Firefox\\firefox.exe",
+        "icon": "firefox.png",
+        "position": [3,5],
+        "size": 1
+    }
+  ]
+}
