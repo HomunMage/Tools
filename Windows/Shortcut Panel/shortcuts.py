@@ -1,9 +1,9 @@
+
 import os
 import json
 import tkinter as tk
 from tkinter import Button, Toplevel, PhotoImage
 import subprocess
-from EXE2PNG import EXE2PNG
 
 def launch_exe(path):
     """Function to launch an executable."""
@@ -23,11 +23,11 @@ def main():
     # For each shortcut in the JSON data, create a button
     for shortcut in data['shortcuts']:
         exe_path = os.path.expandvars(shortcut['path'])  # Handle environment variables in the path
-        icon_path = os.path.splitext(os.path.basename(exe_path))[0] + '.png'
         
-        # Extract icon if it doesn't exist
-        if not os.path.exists(icon_path):
-            EXE2PNG(exe_path)
+        # Check if "icon" field exists, otherwise use the default naming scheme
+        icon_path = shortcut.get('icon', None)
+        if not icon_path:
+            icon_path = os.path.splitext(os.path.basename(exe_path))[0] + '.png'
 
         # Create button with image
         img = PhotoImage(file=icon_path)
@@ -52,7 +52,6 @@ def main():
         btn.grid(row=y, column=x, padx=5, pady=5, rowspan=rowspan, columnspan=columnspan)
 
     root.mainloop()
-
 
 if __name__ == '__main__':
     main()
