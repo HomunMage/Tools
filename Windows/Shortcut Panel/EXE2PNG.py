@@ -23,8 +23,13 @@ def EXE2PNG(exe_path):
 
         img = Image.open(ico_path)
         img.save(save_path)
+        img.close()  # Close the image to release the file lock
 
         print(f"Icon saved to {save_path}")
+        
+        # Remove the temporary ICO file
+        os.remove(ico_path)
+        print(f"{ico_path} removed successfully.")
     else:
         print(f"No icons found in {exe_path}")
 

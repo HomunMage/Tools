@@ -19,7 +19,7 @@ def extract_icons_from_json(json_path):
         if 'icon' in shortcut:
             continue
 
-        exe_path = os.path.expandvars(shortcut['path'])  # This is to handle environment variables in the path
+        exe_path = os.path.expandvars(shortcut['exe_path'])  # This is to handle environment variables in the path
         EXE2PNG(exe_path)
 
 if __name__ == '__main__':

@@ -5,9 +5,12 @@ import tkinter as tk
 from tkinter import Button, Toplevel, PhotoImage
 import subprocess
 
-def launch_exe(path):
-    """Function to launch an executable."""
-    subprocess.Popen(path, shell=True)
+def launch_exe(path_or_command):
+    """Function to launch an executable or a shell command."""
+    if path_or_command.startswith("start "):
+        subprocess.Popen(path_or_command, shell=True)
+    else:
+        subprocess.Popen([path_or_command], shell=True)
 
 def main():
     # Load JSON data
@@ -22,7 +25,7 @@ def main():
 
     # For each shortcut in the JSON data, create a button
     for shortcut in data['shortcuts']:
-        exe_path = os.path.expandvars(shortcut['path'])  # Handle environment variables in the path
+        exe_path = os.path.expandvars(shortcut['exe_path'])  # Handle environment variables in the path
         
         # Check if "icon" field exists, otherwise use the default naming scheme
         icon_path = shortcut.get('icon', None)
