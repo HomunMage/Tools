@@ -11,12 +11,14 @@ def launch_exe(path):
 
 def main():
     # Load JSON data
-    with open('setting.json', 'r') as file:
+    with open('setting.json', 'r', encoding='utf-8') as file:
         data = json.load(file)
 
     # Set up the main window
     root = tk.Tk()
     root.title("Shortcut Panel")
+
+    basesize = data['basesize']  # Load basesize from JSON
 
     # For each shortcut in the JSON data, create a button
     for shortcut in data['shortcuts']:
@@ -29,15 +31,28 @@ def main():
 
         # Create button with image
         img = PhotoImage(file=icon_path)
-        btn = Button(root, text=shortcut['name'], image=img, compound=tk.TOP, 
+        
+        # Resize the image based on basesize and shortcut's size
+        size_multiplier = shortcut['size']
+        new_width = basesize * size_multiplier
+        new_height = basesize * size_multiplier
+
+        img = img.subsample(int(img.width() // new_width), int(img.height() // new_height))
+        
+        # Create the button with the adjusted width, height, and no text
+        btn = Button(root, image=img, compound=tk.TOP, 
                      command=lambda exe_path=exe_path: launch_exe(exe_path))
         btn.image = img  # To prevent garbage collection of the image
 
-        # Position button based on position in JSON multiplied by base size
+        # Calculate rowspan and columnspan based on shortcut size
+        rowspan = columnspan = shortcut['size']
+
+        # Position button based on position in JSON, and account for rowspan/columnspan
         x, y = shortcut['position']
-        btn.grid(row=y, column=x, padx=5, pady=5)
+        btn.grid(row=y, column=x, padx=5, pady=5, rowspan=rowspan, columnspan=columnspan)
 
     root.mainloop()
+
 
 if __name__ == '__main__':
     main()

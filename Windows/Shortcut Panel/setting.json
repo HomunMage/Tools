@@ -1,20 +1,20 @@
 {
-  "basesize" : 20,
+  "basesize" : 32,
   "shortcuts" :
   [
     {
       "name": "Shortcut1",
       "path": "%SystemRoot%\\system32\\WindowsPowerShell\\v1.0\\powershell.exe",
       "icon": "powershell.png",
-      "position": [1,1],
+      "position": [2,2],
       "size": 1
     },
     {
       "name": "Shortcut2",
-      "path": "C:\\Windows\\explorer.exe",
+      "path": "%windir%\\explorer.exe",
       "icon": "explorer.png",
       "position": [1,2],
-      "size": 2
+      "size": 1
     },
     {
         "name": "Shortcut2",
@@ -22,6 +22,22 @@
         "icon": "firefox.png",
         "position": [3,5],
         "size": 1
+    },
+    {
+      "name": "剪取工具",
+      "path": "%windir%\\system32\\SnippingTool.exe",
+      "icon": "SnippingTool.png",
+      "position": [3,1],
+      "size": 1
+      
+    },
+    {
+      "name": "記事本",
+      "path": "%windir%\\system32\\notepad.exe",
+      "icon": "notepad.png",
+      "position": [4,2],
+      "size": 1
+      
     }
   ]
 }
