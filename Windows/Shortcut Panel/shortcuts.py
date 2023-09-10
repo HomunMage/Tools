@@ -1,16 +1,15 @@
-
 import os
 import json
 import tkinter as tk
-from tkinter import Button, Toplevel, PhotoImage
+from tkinter import ttk, Button, Toplevel, PhotoImage
 import subprocess
+import shlex
+
 
 def launch_exe(path_or_command):
     """Function to launch an executable or a shell command."""
-    if path_or_command.startswith("start "):
-        subprocess.Popen(path_or_command, shell=True)
-    else:
-        subprocess.Popen([path_or_command], shell=True)
+    parts = shlex.split(path_or_command)
+    subprocess.Popen(parts, shell=True)
 
 def main():
     # Load JSON data
@@ -20,6 +19,21 @@ def main():
     # Set up the main window
     root = tk.Tk()
     root.title("Shortcut Panel")
+
+    # Apply a dark theme
+    root.configure(bg='#2E2E2E')
+    
+    style = ttk.Style()
+    style.theme_use('alt')
+    style.configure('TButton', 
+                    background='#333333',
+                    foreground='white',
+                    bordercolor='#555555',
+                    padding=10)
+
+    style.map('TButton',
+              background=[('pressed', '#555555'), ('active', '#666666')],
+              foreground=[('pressed', 'white'), ('active', 'white')])
 
     basesize = data['basesize']  # Load basesize from JSON
 
@@ -43,8 +57,8 @@ def main():
         img = img.subsample(int(img.width() // new_width), int(img.height() // new_height))
         
         # Create the button with the adjusted width, height, and no text
-        btn = Button(root, image=img, compound=tk.TOP, 
-                     command=lambda exe_path=exe_path: launch_exe(exe_path))
+        btn = ttk.Button(root, image=img, 
+                         command=lambda exe_path=exe_path: launch_exe(exe_path))
         btn.image = img  # To prevent garbage collection of the image
 
         # Calculate rowspan and columnspan based on shortcut size

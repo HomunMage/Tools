@@ -29,7 +29,6 @@ def EXE2PNG(exe_path):
         
         # Remove the temporary ICO file
         os.remove(ico_path)
-        print(f"{ico_path} removed successfully.")
     else:
         print(f"No icons found in {exe_path}")
 
