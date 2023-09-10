@@ -72,6 +72,28 @@ def main():
         x, y = shortcut['position']
         btn.grid(row=y, column=x, padx=5, pady=5, rowspan=rowspan, columnspan=columnspan)
 
+    # Assume taskbar width
+    TASKBAR_WIDTH = 66
+
+    # Get screen width and height
+    screen_width = root.winfo_screenwidth()
+    screen_height = root.winfo_screenheight()
+
+    # Update window to ensure it's drawn and we can get its dimensions
+    root.update_idletasks()
+
+    # Get the window width and height
+    window_width = root.winfo_width()
+    window_height = root.winfo_height()
+
+    # Calculate x coordinate for the window to be close to the right side (before the taskbar) 
+    x = screen_width - window_width - TASKBAR_WIDTH - 10  # 10 is a small margin
+
+    # Set y to a small margin from the top
+    y = 0
+
+    # Set the position of the window
+    root.geometry(f'+{x}+{y}')
     root.mainloop()
 
 if __name__ == '__main__':
