@@ -1,15 +1,17 @@
 import os
 import json
 import tkinter as tk
-from tkinter import ttk, Button, Toplevel, PhotoImage
+from tkinter import ttk, PhotoImage
 import subprocess
-import shlex
 
 
-def launch_exe(path_or_command):
-    """Function to launch an executable or a shell command."""
-    parts = shlex.split(path_or_command)
-    subprocess.Popen(parts, shell=True)
+def launch_exe(exe_path, args=[]):
+    """Function to launch an executable with arguments."""
+    try:
+        cmd = [os.path.expandvars(exe_path)] + args
+        subprocess.run(cmd)
+    except Exception as e:
+        print(f"Error executing {exe_path}: {e}")
 
 def main():
     # Load JSON data
@@ -40,7 +42,9 @@ def main():
     # For each shortcut in the JSON data, create a button
     for shortcut in data['shortcuts']:
         exe_path = os.path.expandvars(shortcut['exe_path'])  # Handle environment variables in the path
-        
+        args = shortcut.get('args', [])
+
+
         # Check if "icon" field exists, otherwise use the default naming scheme
         icon_path = shortcut.get('icon', None)
         if not icon_path:
@@ -58,7 +62,7 @@ def main():
         
         # Create the button with the adjusted width, height, and no text
         btn = ttk.Button(root, image=img, 
-                         command=lambda exe_path=exe_path: launch_exe(exe_path))
+                         command=lambda exe_path=exe_path, args=args: launch_exe(exe_path, args))
         btn.image = img  # To prevent garbage collection of the image
 
         # Calculate rowspan and columnspan based on shortcut size

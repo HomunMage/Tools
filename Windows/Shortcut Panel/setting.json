@@ -4,7 +4,8 @@
   [    
     {
       "name": "控制台",
-      "exe_path": "start control",
+      "exe_path": "cmd",
+      "args": ["/c", "start control"],
       "icon": "Control_Panel.png",
       "position": [1,1],
       "size": 1
@@ -155,30 +156,37 @@
     {
         "name": "Studio One",
         "exe_path": "%ProgramFiles%\\PreSonus\\Studio One 6\\Studio One.exe",
-        "position": [2,7],
+        "position": [3,7],
         "size": 1
     },
     {
         "name": "VLC",
         "exe_path": "%ProgramFiles%\\VideoLAN\\VLC\\vlc.exe",
-        "position": [3,7],
+        "position": [4,7],
         "size": 1
     },
     {
         "name": "CLIP STUDIO PAINT",
         "exe_path": "%ProgramFiles%\\CELSYS\\CLIP STUDIO 1.5\\CLIP STUDIO\\CLIPStudio.exe",
-        "position": [4,7],
+        "position": [5,7],
         "size": 1
     },
     {
         "name": "TeamViewer",
         "exe_path": "%ProgramFiles%\\TeamViewer\\TeamViewer.exe",
-        "position": [5,7],
+        "position": [6,7],
+        "size": 1
+    },
+    {
+        "name": "File Download Manager",
+        "exe_path": "%ProgramFiles%\\Softdeluxe\\Free Download Manager\\fdm.exe",
+        "position": [5,8],
         "size": 1
     },
     {
         "name": "Warcraft III",
-        "exe_path": "\"C:\\Data\\Games\\Blizzard\\Warcraft III\\Warcraft III.exe\" -window",
+        "exe_path": "C:\\Data\\Games\\Blizzard\\Warcraft III\\Warcraft III.exe",
+        "args": ["-window"],
         "icon": "Warcraft III.png",
         "position": [1,9],
         "size": 1
