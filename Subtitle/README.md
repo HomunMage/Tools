@@ -7,8 +7,6 @@ Subtitle with dual-lang
   * [CTranslate2](./CTranslate2.md)
 * usage:
   * convert.ps1
-* Real-example:
-  * https://www.youtube.com/watch?v=XhEk5MEVfcw
 
 ## Flow:
 ```mermaid
