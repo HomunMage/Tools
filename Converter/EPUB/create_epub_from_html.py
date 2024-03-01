@@ -2,7 +2,7 @@ from ebooklib import epub
 import os
 import argparse
 
-def ConvertHtml2EPUB(target_dir, output_filename):
+def create_epub_from_html(target_dir, output_filename):
     book = epub.EpubBook()
     # Set some basic metadata
     book.set_identifier('id123456')
@@ -66,7 +66,7 @@ def main():
 
     args = parser.parse_args()
 
-    ConvertHtml2EPUB(args.input, args.output)
+    create_epub_from_html(args.input, args.output)
 
 if __name__ == '__main__':
     main()
