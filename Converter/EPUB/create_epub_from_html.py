@@ -1,7 +1,8 @@
 from ebooklib import epub
 import os
+import argparse
 
-def create_epub_from_html(target_dir, output_filename):
+def ConvertHtml2EPUB(target_dir, output_filename):
     book = epub.EpubBook()
     # Set some basic metadata
     book.set_identifier('id123456')
@@ -58,7 +59,14 @@ def create_epub_from_html(target_dir, output_filename):
     # Write the EPUB file
     epub.write_epub(output_filename, book, {})
 
-# Example usage
-output_epub = 'output.epub'
-target_dir = '_tmp'
-create_epub_from_html(target_dir, output_epub)
+def main():
+    parser = argparse.ArgumentParser(description='Create an EPUB file from HTML or Markdown files in a directory.')
+    parser.add_argument('-i', '--input', required=True, help='Input directory containing HTML or Markdown files.')
+    parser.add_argument('-o', '--output', required=True, help='Output EPUB file name.')
+
+    args = parser.parse_args()
+
+    ConvertHtml2EPUB(args.input, args.output)
+
+if __name__ == '__main__':
+    main()
