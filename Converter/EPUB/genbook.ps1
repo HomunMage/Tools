@@ -14,6 +14,9 @@ New-Item -ItemType Directory -Force -Path $tmpDir
 # Convert Markdown to HTML
 python convert_md_to_html.py -i $sourceDir -o $tmpDir
 
+# Copy jpg from source to target
+python copy_jpg_files.py -i $sourceDir -o $tmpDir
+
 # Convert HTML to EPUB
 python create_epub_from_html.py -i $tmpDir -o $outputEpub
 
