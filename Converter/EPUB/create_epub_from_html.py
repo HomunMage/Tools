@@ -1,16 +1,25 @@
 from ebooklib import epub
 import os
 import mimetypes
+import uuid
 import argparse
-
-mimetypes.add_type('image/webp', '.webp')
 
 def create_epub_from_html(target_dir, output_filename):
     book = epub.EpubBook()
     # Set some basic metadata
-    book.set_identifier('id123456')
-    book.set_title('鍊金魔法師 - 創業xAIx學習')
-    book.set_language('en')
+
+    unique_id = str(uuid.uuid4())
+    book.set_identifier(unique_id)
+
+    book.set_title('鍊金Mage - 創業思維x人工智慧x學習技巧')
+    book.set_language('zh-tw')
+
+    cover_image_path = os.path.join(target_dir, 'cover.jpg')
+    mime_type, _ = mimetypes.guess_type(cover_image_path)
+    if mime_type:
+        with open(cover_image_path, 'rb') as img_file:
+            book.set_cover("cover.jpg", img_file.read(), create_page=True)
+
 
     # Dictionary to hold the directory structure and corresponding EpubHtml items
     sections = {}
