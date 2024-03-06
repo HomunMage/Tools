@@ -3,6 +3,19 @@ import os
 import mimetypes
 import uuid
 import argparse
+import pypandoc
+
+def create_toc_page(sections):
+    """Generate TOC HTML content."""
+    toc_content = '<h1>Table of Contents</h1>'
+    for section_name, items in sections.items():
+        if section_name != '.':
+            toc_content += f'<h2>{section_name}</h2>'
+        toc_content += '<ul>'
+        for item in items:
+            toc_content += f'<li><a href="{item.file_name}">{item.title}</a></li>'
+        toc_content += '</ul>'
+    return toc_content
 
 def create_epub_from_html(target_dir, output_filename):
     book = epub.EpubBook()
@@ -19,7 +32,6 @@ def create_epub_from_html(target_dir, output_filename):
     if mime_type:
         with open(cover_image_path, 'rb') as img_file:
             book.set_cover("cover.jpg", img_file.read(), create_page=True)
-
 
     # Dictionary to hold the directory structure and corresponding EpubHtml items
     sections = {}
@@ -67,8 +79,14 @@ def create_epub_from_html(target_dir, output_filename):
                         # Note: You'll need to update your HTML content to reference these images correctly
                         print(f"Adding image: {file_path} as {epub_image.file_name}")
 
+    # Generate and add TOC page
+    toc_content = create_toc_page(sections)
+    toc_page = epub.EpubHtml(title='Table of Contents', file_name='toc.html', content=toc_content, lang='en')
+    book.add_item(toc_page)
+    book.spine.insert(0, toc_page)  # Insert TOC at the beginning of the spine
+
     # Create a hierarchical TOC and sections for the book
-    toc_list = []
+    toc_list = [(epub.Section('Table of Contents'), [toc_page])]
     for section_name, items in sections.items():
         if section_name == '.':  # Top-level files
             toc_list.extend(items)
