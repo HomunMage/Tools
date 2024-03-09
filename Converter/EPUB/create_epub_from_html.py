@@ -13,7 +13,7 @@ def create_toc_page(sections):
             toc_content += f'<h2>{section_name}</h2>'
         toc_content += '<ul>'
         for item in items:
-            toc_content += f'<li><a href="{item.file_name}">{item.title}</a></li>'
+            toc_content += f'<li>{item.title}</li>'
         toc_content += '</ul>'
     return toc_content
 
@@ -25,6 +25,7 @@ def create_epub_from_html(target_dir, output_filename):
     book.set_identifier(unique_id)
 
     book.set_title('鍊金Mage - 創業思維x人工智慧x學習技巧')
+    book.add_author('鍊金Mage')
     book.set_language('zh-tw')
 
     cover_image_path = os.path.join(target_dir, 'cover.jpg')
@@ -63,6 +64,8 @@ def create_epub_from_html(target_dir, output_filename):
 
                 # Add the item to the book's spine
                 book.spine.append(epub_item)
+
+                print(f"Adding file: {file_path}")
 
             elif file.lower().endswith(('.png', '.jpg', '.jpeg', '.gif', '.webp')):
                 # Ensure we don't add the same image multiple times
