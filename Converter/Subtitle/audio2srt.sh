@@ -18,8 +18,17 @@ base_name="${file_name%.*}"
 output_srt="$dir_name/$base_name.tmp.srt"
 zh_tw_srt="$dir_name/$base_name.srt"
 
-# Generate SRT using the input file
-docker exec whisper python ./audio2srt.py "$input_file" "$output_srt"
+container_name="whisper"
+lock_file="/tmp/audio2srt.lock"
+if docker exec $container_name test -f "$lock_file"; then
+    echo "Process is already running."
+    exit
+else
+    docker exec $container_name touch "$lock_file"
+    # Generate SRT using the input file
+    docker exec $container_name python ./audio2srt.py "$input_file" "$output_srt"
+    docker exec $container_name rm -f "$lock_file"
+fi
 
 # Convert SRT to Traditional Chinese
 docker exec whisper opencc -i "$output_srt" -o "$zh_tw_srt" -c s2twp.json
