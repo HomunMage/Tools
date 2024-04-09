@@ -30,11 +30,11 @@ else
     docker exec $container_name rm -f "$lock_file"
 fi
 
-# Convert SRT to Traditional Chinese
-docker exec whisper opencc -i "$output_srt" -o "$zh_tw_srt" -c s2twp.json
-
 end_time=$(date +%s) # Capture end time
 
 # Calculate and display total execution time
 total_time=$((end_time - start_time))
 echo "Total execution time: $total_time seconds"
+
+# Convert SRT to Traditional Chinese
+docker exec whisper opencc -i "$output_srt" -o "$zh_tw_srt" -c s2twp.json
