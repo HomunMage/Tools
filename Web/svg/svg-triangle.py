@@ -37,7 +37,7 @@ def create_labeled_triangle(filename, image_size, num_layers, labels, start_colo
         dwg.add(dwg.text(labels[i], insert=(image_size / 2, text_position_y), text_anchor="middle", font_size="15px", fill="black"))
 
     # Save the drawing
-    dwg.save()
+    dwg.save(pretty=True)  # Enable pretty printing
 
 # Example usage:
 image_size = 300
