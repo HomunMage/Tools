@@ -19,16 +19,18 @@ def create_concentric_circles(filename, image_size, num_circles, labels, start_c
     # Draw the circles from the outside to the inside with interpolated colors
     for i in range(num_circles, 0, -1):
         radius = radius_step * i
-        dwg.add(dwg.circle(center=center, r=radius, fill=colors[i-1], stroke='none'))
+        circle = dwg.circle(center=center, r=radius, fill=colors[i-1], stroke='none')
+        dwg.add(circle)
 
     # Draw the labels starting from the center downwards
     for i in range(num_circles):
         radius = radius_step * i
         text_position_y = center[1] + radius_step * (i + 0.5)
-        dwg.add(dwg.text(labels[i], insert=(center[0], text_position_y), text_anchor="middle", font_size="15px", fill="black"))
+        text = dwg.text(labels[i], insert=(center[0], text_position_y), text_anchor="middle", font_size="15px", fill="black")
+        dwg.add(text)
 
     # Save the drawing
-    dwg.save()
+    dwg.save(pretty=True)  # Enable pretty printing
 
 # Example usage:
 image_size = 400
