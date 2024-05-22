@@ -1,15 +1,5 @@
 import svgwrite
-
-def interpolate_color(start_color, end_color, factor: float):
-    """Interpolate between two RGB colors."""
-    return tuple([
-        int(start_color[i] + (end_color[i] - start_color[i]) * factor)
-        for i in range(3)
-    ])
-
-def rgb_to_hex(rgb):
-    """Convert an RGB color to HEX format."""
-    return f'#{rgb[0]:02x}{rgb[1]:02x}{rgb[2]:02x}'
+from color_utils import interpolate_color, rgb_to_hex
 
 def create_concentric_circles(filename, image_size, num_circles, labels, start_color, end_color):
     dwg = svgwrite.Drawing(filename, size=(image_size, image_size), profile='tiny')
@@ -43,7 +33,7 @@ def create_concentric_circles(filename, image_size, num_circles, labels, start_c
 # Example usage:
 image_size = 400
 labels = ["$", "Definition", "Vision", "Design Pillars", "Systems", "Implementation"]
-start_color = (255, 255, 0)  
+start_color = (255, 255, 0)
 end_color = (0, 128, 255)
 num_circles = len(labels)
 
