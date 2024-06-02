@@ -2,6 +2,3 @@
 
 ## Get powershell history
 (Get-PSReadlineOption).HistorySavePath
-
-
-##
