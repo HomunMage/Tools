@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xlink="http://www.w3.org/1999/xlink" baseProfile="tiny" height="300" version="1.2" width="300">
+  <defs/>
+  <polygon fill="#ffff00" points="150.0,0.0 150.0,0.0 175.0,50.0 125.0,50.0" stroke="black"/>
+  <polygon fill="#cce533" points="125.0,50.0 175.0,50.0 200.0,100.0 100.0,100.0" stroke="black"/>
+  <polygon fill="#99cc66" points="100.0,100.0 200.0,100.0 225.0,150.0 75.0,150.0" stroke="black"/>
+  <polygon fill="#66b299" points="75.0,150.0 225.0,150.0 250.0,200.0 50.0,200.0" stroke="black"/>
+  <polygon fill="#3399cc" points="50.0,200.0 250.0,200.0 275.0,250.0 25.0,250.0" stroke="black"/>
+  <polygon fill="#0080ff" points="25.0,250.0 275.0,250.0 300.0,300.0 0.0,300.0" stroke="black"/>
+  <text fill="black" font-size="15px" text-anchor="middle" x="150.0" y="25.0">$</text>
+  <text fill="black" font-size="15px" text-anchor="middle" x="150.0" y="75.0">Definition</text>
+  <text fill="black" font-size="15px" text-anchor="middle" x="150.0" y="125.0">Vision</text>
+  <text fill="black" font-size="15px" text-anchor="middle" x="150.0" y="175.0">Design Pillars</text>
+  <text fill="black" font-size="15px" text-anchor="middle" x="150.0" y="225.0">Systems</text>
+  <text fill="black" font-size="15px" text-anchor="middle" x="150.0" y="275.0">Details</text>
+</svg>

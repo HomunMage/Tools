@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xlink="http://www.w3.org/1999/xlink" baseProfile="tiny" height="400" version="1.2" width="400">
+  <defs/>
+  <circle cx="200.0" cy="200.0" fill="#0080ff" r="200.0" stroke="none"/>
+  <circle cx="200.0" cy="200.0" fill="#3399cc" r="166.6667" stroke="none"/>
+  <circle cx="200.0" cy="200.0" fill="#66b299" r="133.3333" stroke="none"/>
+  <circle cx="200.0" cy="200.0" fill="#99cc66" r="100.0" stroke="none"/>
+  <circle cx="200.0" cy="200.0" fill="#cce533" r="66.6667" stroke="none"/>
+  <circle cx="200.0" cy="200.0" fill="#ffff00" r="33.3333" stroke="none"/>
+  <text fill="black" font-size="15px" text-anchor="middle" x="200.0" y="216.66666666666666">$</text>
+  <text fill="black" font-size="15px" text-anchor="middle" x="200.0" y="250.0">Definition</text>
+  <text fill="black" font-size="15px" text-anchor="middle" x="200.0" y="283.33333333333337">Vision</text>
+  <text fill="black" font-size="15px" text-anchor="middle" x="200.0" y="316.6666666666667">Design Pillars</text>
+  <text fill="black" font-size="15px" text-anchor="middle" x="200.0" y="350.0">Systems</text>
+  <text fill="black" font-size="15px" text-anchor="middle" x="200.0" y="383.33333333333337">Implementation</text>
+</svg>

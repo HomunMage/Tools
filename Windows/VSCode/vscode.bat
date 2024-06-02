@@ -1,1 +1,0 @@
-C:\<vsc path>\Code.exe --user-data-dir=C:\<folder name>\usr --extensions-dir=C:\<foldername>\ext %*
