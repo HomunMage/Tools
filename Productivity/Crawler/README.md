@@ -1,15 +1,17 @@
 # Crawler
 
+get info online
+
 ```
 pip install selenium
-
-python twitter_crawler.py --id who_you_want_download --gecko_driver geckodriver.exe
-
 ```
 
-## bug now:
-now cannot download in right sequence, todo: fix it
+## twitter
 
+```
+python your_script_name.py --url "https://twitter.com/your_twitter_page" --gecko "/path/to/geckodriver" --headless
+
+```
 
 ## code:
 

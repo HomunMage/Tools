@@ -1,66 +1,69 @@
 import time
+import os
+import sys
 import argparse
+from datetime import datetime
 from selenium import webdriver
 from selenium.webdriver.firefox.service import Service
 from selenium.webdriver.common.by import By
-from datetime import datetime
+from selenium.webdriver.firefox.options import Options
 
-def init_webdriver(gecko_driver_path):
-    service = Service(gecko_driver_path)
-    options = webdriver.FirefoxOptions()
+def init_driver(geckodriver_path, headless):
+    options = Options()
+    if headless:
+        options.add_argument("--headless")  # Run in headless mode if specified
+    service = Service(executable_path=geckodriver_path)
     driver = webdriver.Firefox(service=service, options=options)
     return driver
 
-def store_tweets(driver, stored_tweets):
-    tweets = driver.find_elements(By.XPATH, '//div[@data-testid="tweetText"]')
-    new_tweets = []
-    for tweet in tweets:
-        tweet_text = tweet.text
-        if tweet_text not in stored_tweets:
-            stored_tweets.add(tweet_text)
-            new_tweets.append(tweet_text)
-    
-    if new_tweets:
-        now = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
-        filename = f"{now}.md"
-        with open(filename, 'w', encoding='utf-8') as file:
-            for tweet in new_tweets:
-                file.write(tweet + "\n\n")
+def store_tweet(content):
+    timestamp = datetime.now().strftime("%Y%m%d%H%M%S")
+    filename = f"{timestamp}.md"
+    with open(filename, "a", encoding="utf-8") as file:
+        file.write(content + "\n\n")
+    print(f"Stored tweet in {filename}")
 
-def main(twitter_handle, gecko_driver_path):
-    url = f"https://twitter.com/{twitter_handle}"
-    driver = init_webdriver(gecko_driver_path)
+def crawl_twitter(driver, url):
     driver.get(url)
+    last_height = driver.execute_script("return document.body.scrollHeight")
 
-    # Wait for the page to load
-    time.sleep(5)
+    while True:
+        tweets = driver.find_elements(By.XPATH, "//article[@data-testid='tweet']")
 
-    # Define a set to keep track of stored tweets to avoid duplicates
-    stored_tweets = set()
-    scroll_pause_time = 5  # Time to wait before scrolling
-    max_scroll_attempts = 5  # Maximum number of scroll attempts
+        for tweet in tweets:
+            try:
+                content = tweet.text
+                store_tweet(content)
+            except Exception as e:
+                print(f"Error storing tweet: {e}")
 
-    # Main loop to store tweets every 5 seconds
-    scroll_attempts = 0
-    while scroll_attempts < max_scroll_attempts:
-        store_tweets(driver, stored_tweets)
-        time.sleep(5)
-        current_height = driver.execute_script("return document.body.scrollHeight")
-        driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
-        time.sleep(scroll_pause_time)
+        # Scroll down in smaller increments
+        driver.execute_script("window.scrollBy(0, 250);")
+        time.sleep(1)
         new_height = driver.execute_script("return document.body.scrollHeight")
-        if new_height == current_height:
-            scroll_attempts += 1
-        else:
-            scroll_attempts = 0
 
-    # Close the driver
-    driver.quit()
+        if new_height == last_height:
+            print("No new tweets found, waiting for 5 seconds...")
+            time.sleep(5)
+        else:
+            last_height = new_height
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description='Twitter Crawler')
-    parser.add_argument('--id', required=True, help='Twitter handle to crawl')
-    parser.add_argument('--gecko_driver', required=True, help='Path to the GeckoDriver executable')
+    parser = argparse.ArgumentParser(description="Twitter Crawler Script")
+    parser.add_argument("--url", required=True, help="The URL of the Twitter page to crawl")
+    parser.add_argument("--gecko", required=True, help="The path to the geckodriver executable")
+    parser.add_argument("--headless", action="store_true", help="Run the browser in headless mode")
+
     args = parser.parse_args()
     
-    main(args.id, args.gecko_driver)
+    twitter_url = args.url
+    geckodriver_path = args.gecko
+    headless = args.headless
+    
+    driver = init_driver(geckodriver_path, headless)
+    try:
+        crawl_twitter(driver, twitter_url)
+    except Exception as e:
+        print(f"An error occurred: {e}")
+    finally:
+        driver.quit()
