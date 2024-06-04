@@ -1,0 +1,19 @@
+{
+    "Title": "Sunset over the Mountains",
+    "Author": "Jane Doe",
+    "Description": "A beautiful sunset over the rocky mountains captured during a summer evening.",
+    "CreationDate": "2023-05-20",
+    "Location": "Rocky Mountains, Colorado, USA",
+    "Camera": "Canon EOS 5D Mark IV",
+    "Lens": "EF24-70mm f/2.8L II USM",
+    "FocalLength": "35mm",
+    "ExposureTime": "1/250",
+    "Aperture": "f/8",
+    "ISO": "100",
+    "Keywords": ["sunset", "mountains", "landscape", "photography", "nature"],
+    "Copyright": "© 2023 Jane Doe. All rights reserved.",
+    "Contact": {
+        "Email": "jane.doe@example.com",
+        "Website": "https://www.janedoephotography.com"
+    }
+}
