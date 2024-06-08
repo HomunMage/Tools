@@ -2,15 +2,17 @@ Windows Registry Editor Version 5.00
 
 [HKEY_CLASSES_ROOT\Directory\shell\VSCode]
 @="Open with VSCode"
-"Icon"="C:\\PosetMage\\Program\\Microsoft\\VSCode\\Code.exe"
+"Icon"="C:\\Program Files\\Microsoft VS Code\\Code.exe"
 
 [HKEY_CLASSES_ROOT\Directory\shell\VSCode\command]
-@="\"C:\\PosetMage\\Program\\Microsoft\\VSCode\\Code.exe\" \"%V\""
+@="\"C:\\Program Files\\Microsoft VS Code\\Code.exe\" \"%V\""
 
 
 [HKEY_CLASSES_ROOT\Directory\Background\shell\VSCode]
 @="Open with VSCode"
-"Icon"="C:\\PosetMage\\Program\\Microsoft\\VSCode\\Code.exe"
+"Icon"="C:\\Program Files\\Microsoft VS Code\\Code.exe"
 
 [HKEY_CLASSES_ROOT\Directory\Background\shell\VSCode\command]
-@="\"C:\\PosetMage\\Program\\Microsoft\\VSCode\\Code.exe\" \"%V\""
+@="\"C:\\Program Files\\Microsoft VS Code\\Code.exe\" \"%V\""
+
+

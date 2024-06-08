@@ -18,7 +18,9 @@ Using VSCode with costmized usr/ext folder
     * (default)
   * data:
     * cmd /c "wscript.exe "C:\<path-to-it>\launch_vscode.vbs" "%V""
-
+* vs.reg
+  * example: 
+  * <div class="load_as_code_session" data-url="vs.reg">Loading content...</div>
 
 
 <script src="{{ '/assets/js/LoadAsCodeSession.js' | relative_url }}"></script>
