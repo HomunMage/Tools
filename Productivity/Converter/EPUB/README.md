@@ -11,3 +11,12 @@
 
 <script src="{{ '/assets/js/LoadAsCodeSession.js' | relative_url }}"></script>
 
+
+## example code
+
+* convert_md_to_html.py:
+  * <div class="load_as_code_session" data-url="convert_md_to_html.py">Loading content...</div>
+* copy_jpg_files.py:
+  * <div class="load_as_code_session" data-url="copy_jpg_files.py">Loading content...</div>
+* create_epub_from_html.py:
+  * <div class="load_as_code_session" data-url="create_epub_from_html.py">Loading content...</div>
