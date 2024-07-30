@@ -27,6 +27,7 @@ baseurl: /Tools # the subpath of your site, e.g. /Tools
 repository: latticemage/Tools
 
 exclude:
+  - Productivity/Converter/EPUB/book1/
   - _includes/.git/
   - _layouts/.git/
   - _layouts/page/.git/
