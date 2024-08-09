@@ -1,1 +1,1 @@
-C:\PosetMage\Package\Microsoft\VSCode\Code.exe --user-data-dir=C:\PosetMage\Package\Microsoft\usr --extensions-dir=C:\PosetMage\Package\Microsoft\ext %*
+<Path to VSCode>\Code.exe --user-data-dir=<Path to usr>\usr --extensions-dir=<Path to ext>\ext %*
