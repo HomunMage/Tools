@@ -16,5 +16,9 @@ python embed_metadata.py input.png output.png metadata.json
 
 <div class="load_as_code_session" data-url="embed_metadata.py">Loading content...</div>
 
+## example metadata.json
+<div class="load_as_code_session" data-url="metadata.json">Loading content...</div>
+
+
 
 <script src="{{ '/assets/js/LoadAsCodeSession.js' | relative_url }}"></script>

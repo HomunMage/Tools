@@ -1,7 +1,4 @@
----
-layout: page/note/directory
----
-
+# Youtube
 
 ## yt-dlp default download folder
 ```
