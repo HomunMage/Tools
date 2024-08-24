@@ -1,4 +1,4 @@
-Simple Authentication for Docker Services Using Nginx and a Custom Backend
+# Simple Authentication for Docker Services
 
 When building services with Docker, securing access to them is often a crucial step. Whether you want to protect an internal API or limit access to a simple web service, you can achieve this with a lightweight authentication layer. In this post, I’ll show you two approaches to add a simple login step to your Docker services.
 
