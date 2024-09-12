@@ -1,0 +1,28 @@
+services:
+  frontend:
+    build:
+      context: ./frontend
+    ports:
+      - "127.0.0.1:3456:3456"
+    volumes:
+      - ./frontend/src:/app/
+    networks:
+      - app-network
+
+  nginx:
+    build:
+      context: ./nginx
+    ports:
+      - "8080:80"
+      - "443:7443"
+    volumes:
+      - ./nginx/log:/var/log/nginx
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./nginx/blocklist.conf:/etc/nginx/blocklist.conf:ro
+      - ./nginx/cert:/etc/nginx/cert:ro
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
