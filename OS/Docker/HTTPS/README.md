@@ -54,12 +54,11 @@ store the content at `nginx/htpasswd/.htpasswd`
 
 one account one line
 
-### 
-
-
-
 
 ### Dockerfile
+<div class="load_as_code_session" data-url="Dockerfile">
+  Loading content...
+</div>
 
 ### Doker Compose
 <div class="load_as_code_session" data-url="docker-compose.yml">
