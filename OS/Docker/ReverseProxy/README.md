@@ -25,7 +25,7 @@ To allow multiple Docker Compose stacks to communicate, you need to create an ex
 Run the following command to create the external network:
 
 ```bash
-docker network create nginx-proxy-network
+docker network create shared-network
 ```
 
 This network will be referenced in all Docker Compose files.
@@ -48,13 +48,13 @@ services:
       - "80:80"
       - "443:443"
     volumes:
-      - ./nginx.conf:/etc/nginx/nginx.conf
-      - ./certs:/etc/nginx/certs
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./ssl:/etc/nginx/ssl:ro
     networks:
-      - nginx-proxy-network
+      - shared-network
 
 networks:
-  nginx-proxy-network:
+  shared-network:
     external: true
 ```
 
@@ -62,7 +62,7 @@ In this setup:
 
 - We expose ports 80 (HTTP) and 443 (HTTPS).
 - We mount the Nginx configuration file (`nginx.conf`) and SSL certificates directory (`certs`).
-- The service is attached to the `nginx-proxy-network`, which is external and will be shared across different stacks.
+- The service is attached to the `shared-network`, which is external and will be shared across different stacks.
 
 #### Nginx Configuration (`nginx.conf`):
 
@@ -76,8 +76,8 @@ http {
         listen 443 ssl;
         server_name example.com;
 
-        ssl_certificate /etc/nginx/certs/example.crt;
-        ssl_certificate_key /etc/nginx/certs/example.key;
+        ssl_certificate /etc/nginx/ssl/example.crt;
+        ssl_certificate_key /etc/nginx/ssl/example.key;
 
         location / {
             proxy_pass http://service1:8081;
@@ -92,8 +92,8 @@ http {
         listen 443 ssl;
         server_name another-example.com;
 
-        ssl_certificate /etc/nginx/certs/another-example.crt;
-        ssl_certificate_key /etc/nginx/certs/another-example.key;
+        ssl_certificate /etc/nginx/ssl/another-example.crt;
+        ssl_certificate_key /etc/nginx/ssl/another-example.key;
 
         location / {
             proxy_pass http://service2:8082;
@@ -123,10 +123,10 @@ services:
     ports:
       - "127.0.0.1:8081:8080"
     networks:
-      - nginx-proxy-network
+      - shared-network
 
 networks:
-  nginx-proxy-network:
+  shared-network:
     external: true
 ```
 
@@ -141,10 +141,10 @@ services:
     ports:
       - "127.0.0.1:8082:8080"
     networks:
-      - nginx-proxy-network
+      - shared-network
 
 networks:
-  nginx-proxy-network:
+  shared-network:
     external: true
 ```
 

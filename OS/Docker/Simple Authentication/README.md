@@ -68,6 +68,8 @@ server {
 
 #### Step 3: Create the `.htpasswd` File
 
+Solution1:
+
 To create a username and password for basic authentication, you’ll use the `htpasswd` tool. This file will store the credentials in an encrypted format.
 
 ```bash
@@ -75,6 +77,12 @@ docker run --rm --entrypoint htpasswd httpd:2 -c ./auth/.htpasswd user1
 ```
 
 This command will prompt you for a password for `user1` and create the `.htpasswd` file in the `./auth/` directory.
+
+Solution2:
+```bash
+docker run --rm httpd:alpine htpasswd -nbB username password
+
+```
 
 #### Step 4: Start the Services
 
