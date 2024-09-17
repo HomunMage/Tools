@@ -39,8 +39,7 @@ Using Cloudflare Origin Certificate:
 
 
 ### Files
-put `mydomain.com.key` and `mydomain.com.pem` at `nginx/cert`
-
+put `mydomain.com.key` and `mydomain.com.pem` at `nginx/ssl`
 
 
 ## Nginx

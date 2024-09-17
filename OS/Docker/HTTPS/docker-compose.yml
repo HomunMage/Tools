@@ -19,7 +19,7 @@ services:
       - ./nginx/log:/var/log/nginx
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
       - ./nginx/blocklist.conf:/etc/nginx/blocklist.conf:ro
-      - ./nginx/cert:/etc/nginx/cert:ro
+      - ./nginx/ssl:/etc/nginx/ssl:ro
     networks:
       - app-network
 
