@@ -12,6 +12,30 @@ docker run -d \
   atmoz/sftp
 ```
 
+### DNS
+Step-by-Step DNS Setup in Cloudflare
+
+1. **Log in to Cloudflare**
+   - Go to Cloudflare (https://www.cloudflare.com) and log into your account.
+
+2. **Navigate to DNS Settings**
+   - Select your domain.
+   - In the left-hand menu, click on the "DNS" tab to open the DNS settings.
+
+3. **Add an A Record**
+   - **Type**: Select **A** from the dropdown.
+   - **Name**: Enter the subdomain (e.g., `server` for `server.mydomain.com`).
+   - **IPv4 Address**: Enter your server's public IP address.
+   - **TTL**: Set to **Auto**.
+   - **Proxy Status**: Set to **DNS only** (gray cloud).
+
+4. **Save Your Settings**
+   - Click **Save** to apply your DNS record.
+
+5. **Test DNS Setup**
+   - After a few minutes, use tools like WhatsMyDNS to verify that your subdomain resolves to the correct IP.
+
+
 
 ## SFTP Server Using Docker with `.ppk` Key Authentication
 
