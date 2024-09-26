@@ -48,9 +48,9 @@ In this guide, we'll demonstrate how to securely access a Linux PC from a Window
    sudo nano /etc/ssh/sshd_config
    ```
 
-   Change the port to a non-default value (e.g., 3457):
+   Change the port to a non-default value (e.g., 3390):
    ```bash
-   Port 3457
+   Port 3390
    ```
 
    Ensure only key-based authentication is allowed:
@@ -64,7 +64,6 @@ In this guide, we'll demonstrate how to securely access a Linux PC from a Window
    ```bash
    sudo systemctl restart sshd
    ```
-
 ---
 
 ## firewall
@@ -76,9 +75,9 @@ In this guide, we'll demonstrate how to securely access a Linux PC from a Window
    sudo ufw reset
    ```
 2. **Allow SSH on the Non-Default Port**:
-   Allow incoming connections on your non-default SSH port (3457):
+   Allow incoming connections on your non-default SSH port (3390):
    ```bash
-   sudo ufw allow 3457/tcp
+   sudo ufw allow 3390/tcp
    ```
 
 3. **Allow RDP Only from Localhost**:
@@ -90,7 +89,7 @@ In this guide, we'll demonstrate how to securely access a Linux PC from a Window
 4. **Allow SSH Connections for IPv6**:
    If using IPv6, allow SSH connections on the non-default port:
    ```bash
-   sudo ufw allow 3457/tcp comment 'Allow SSH on custom port for IPv6'
+   sudo ufw allow 3390/tcp comment 'Allow SSH on custom port for IPv6'
    ```
 
 6. **Deny Other `xrdp` Connections**:
@@ -116,8 +115,8 @@ In this guide, we'll demonstrate how to securely access a Linux PC from a Window
    To                         Action      From
    --                         ------      ----
    3389                       ALLOW       127.0.0.1
-   3457/tcp                   ALLOW       Anywhere
-   3457/tcp (v6)              ALLOW       Anywhere (v6)
+   3390/tcp                   ALLOW       Anywhere
+   3390/tcp (v6)              ALLOW       Anywhere (v6)
    ```
 
 ---
@@ -129,12 +128,12 @@ In this guide, we'll demonstrate how to securely access a Linux PC from a Window
 1. **Set Up the SSH Tunnel from Windows**:
    Open Command Prompt or PowerShell on your Windows notebook and create the SSH tunnel using the following command:
    ```bash
-   ssh -i ~/.ssh/id_rsa -L 3456:127.0.0.1:3389 -p 3457 user@linux-pc-ip
+   ssh -i ~/.ssh/id_rsa -L 3388:127.0.0.1:3389 -p 3390 user@linux-pc-ip
    ```
 
    - `-i ~/.ssh/id_rsa`: Specifies the private key file for authentication.
-   - `-L 3456:127.0.0.1:3389`: Forwards local port 3456 to the remote port 3389 where `xrdp` is listening.
-   - `-p 3457`: Uses the non-default SSH port.
+   - `-L 3388:127.0.0.1:3389`: Forwards local port 3388 to the remote port 3389 where `xrdp` is listening.
+   - `-p 3390`: Uses the non-default SSH port.
    - `user@linux-pc-ip`: Replace with your Linux username and IP address.
 
    Keep this terminal open to maintain the SSH tunnel.
@@ -142,7 +141,7 @@ In this guide, we'll demonstrate how to securely access a Linux PC from a Window
 2. **Connect to Linux Desktop via RDP**:
    Use an RDP client on your Windows notebook (such as Remote Desktop Connection) and connect to:
    ```
-   127.0.0.1:3456
+   127.0.0.1:3388
    ```
 
    This will route the RDP connection through the secure SSH tunnel to your Linux desktop.
