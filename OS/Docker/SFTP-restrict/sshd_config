@@ -1,0 +1,24 @@
+# sshd_config
+Port 22
+Protocol 2
+HostKey /etc/ssh/ssh_host_rsa_key
+HostKey /etc/ssh/ssh_host_ecdsa_key
+HostKey /etc/ssh/ssh_host_ed25519_key
+
+# Authentication:
+PermitRootLogin no
+PasswordAuthentication yes
+PermitEmptyPasswords no
+ChallengeResponseAuthentication no
+UsePAM yes
+
+# Chroot configuration
+Subsystem sftp internal-sftp
+Match User <username>
+    ForceCommand internal-sftp
+    ChrootDirectory /home/<username>
+    AllowTcpForwarding no
+    X11Forwarding no
+    ClientAliveInterval 120
+    ClientAliveCountMax 2
+    MaxSessions 10

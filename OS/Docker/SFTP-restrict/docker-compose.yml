@@ -1,0 +1,13 @@
+services:
+  sftp-upload:
+    build: .
+    container_name: sftp-upload
+    ports:
+      - "63580:22"  # Map host port 63580 to container's SSH port 22
+    volumes:
+      - ./shared:/home/<username>/upload  # Mount local 'shared' folder to container
+    environment:
+      - SFTP_USERS=<username>:<pwd>:1001:1001  # Set SFTP user credentials
+    cap_add:
+      - NET_ADMIN  # Add NET_ADMIN capability
+    restart: unless-stopped
