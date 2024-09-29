@@ -12,3 +12,6 @@
 	path = _layouts
 	url = ../latticemage_layouts.git
 	branch = main
+[submodule "OS/Docker"]
+	path = OS/Docker
+	url = git@LM:LatticeMage/Dockerfiles.git
