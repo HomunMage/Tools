@@ -10,7 +10,7 @@
 
 [submodule "_layouts"]
 	path = _layouts
-	url = ../latticemage_layouts.git
+	url = ../homun_layouts.git
 	branch = main
 
 [submodule "OS/Docker"]
