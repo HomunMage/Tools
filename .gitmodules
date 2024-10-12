@@ -3,11 +3,6 @@
 	url = https://github.com/PosetMage/Jekyll_includes.git
 	branch = main
 
-[submodule "assets"]
-	path = assets
-	url = https://github.com/PosetMage/jekyll_assets.git
-	branch = main
-
 [submodule "_layouts"]
 	path = _layouts
 	url = ../homun_layouts.git

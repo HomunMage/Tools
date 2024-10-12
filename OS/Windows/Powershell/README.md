@@ -32,4 +32,4 @@ reg file:
   Loading content...
 </div>
 
-<script src="{{ '/assets/js/LoadAsCodeSession.js' | relative_url }}"></script>
+<script src="https://posetmage.com/assets/js/LoadAsCodeSession.js"></script>
