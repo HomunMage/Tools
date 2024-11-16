@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image and Text Preview</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            height: 100vh;
+            display: flex;
+            flex-direction: row;
+        }
+
+        .main-container {
+            display: flex;
+            width: 100%;
+            height: 100%;
+        }
+
+        .image-container {
+            width: 60%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #ddd;
+        }
+
+        img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+        .right-container {
+            width: 40%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .text-container {
+            flex-grow: 1;
+            overflow-y: auto;
+            padding: 20px;
+            background-color: #fff;
+            border-bottom: 2px solid #ccc;
+        }
+
+        .controls {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            padding: 10px;
+            background-color: #4CAF50;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .filename {
+            text-align: center;
+            font-size: 18px;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+
+        input[type="file"] {
+            display: none;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="main-container">
+    <div class="image-container">
+        <img id="imagePreview" src="output-001.webp" alt="Image Preview">
+    </div>
+
+    <div class="right-container">
+        <div class="filename" id="filenameDisplay">
+            Currently viewing: output-001.webp
+        </div>
+
+        <div class="text-container" id="textPreview">
+        </div>
+
+        <div class="controls">
+            <button onclick="changeFile(-1)">Prev</button>
+            <button onclick="changeFile(1)">Next</button>
+            <button onclick="triggerFileDialog()">Load All Text Files</button>
+            <input type="file" id="fileInput" multiple accept=".txt" onchange="loadTextFiles(event)">
+        </div>
+    </div>
+</div>
+
+<script>
+    let currentIndex = 1; // Start with output-001
+    let textFilesMap = {};  // To store text file content in memory
+
+    // Function to load the image and text based on the current index
+    function loadPreview(index) {
+        const formattedIndex = String(index).padStart(3, '0');
+        
+        // Update the image
+        const imagePath = `output-${formattedIndex}.webp`;
+        document.getElementById("imagePreview").src = imagePath;
+
+        // Update the text content from memory (RAM)
+        const textKey = `output-${formattedIndex}`;
+        if (textFilesMap[textKey]) {
+            document.getElementById("textPreview").innerText = textFilesMap[textKey];
+        } else {
+            document.getElementById("textPreview").innerText = "Text file not loaded yet.";
+        }
+
+        // Update the filename display
+        document.getElementById("filenameDisplay").innerText = `Currently viewing: ${imagePath}`;
+    }
+
+    // Function to increment or decrement the current index
+    function changeFile(increment) {
+        currentIndex += increment;
+        if (currentIndex < 1) currentIndex = 1;  // Prevent going below output-001
+        loadPreview(currentIndex);
+    }
+
+    // Function to trigger the file selection dialog
+    function triggerFileDialog() {
+        document.getElementById("fileInput").click();
+    }
+
+    // Function to handle file selection and load the text content
+    function loadTextFiles(event) {
+        const files = event.target.files;
+
+        // Iterate over selected files
+        for (let i = 0; i < files.length; i++) {
+            const file = files[i];
+            if (file.name.endsWith('.txt')) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const fileName = file.name.replace('.txt', '');
+                    const fileContent = e.target.result;
+
+                    // Store the text content in memory (RAM)
+                    textFilesMap[fileName] = fileContent;
+                };
+                reader.readAsText(file);
+            }
+        }
+
+        // Notify user that files are loaded
+        alert('Text files loaded into memory!');
+    }
+
+    // Load the initial preview (will show text if loaded)
+    loadPreview(currentIndex);
+</script>
+
+</body>
+</html>
