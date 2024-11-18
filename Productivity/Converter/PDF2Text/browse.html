@@ -47,6 +47,13 @@
             flex-direction: column;
         }
 
+        .filename {
+            text-align: center;
+            font-size: 18px;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+
         .text-container {
             flex-grow: 1;
             overflow-y: auto;
@@ -64,7 +71,7 @@
         }
 
         button {
-            padding: 10px 20px;
+            padding: 5px 15px;
             font-size: 16px;
             cursor: pointer;
             background-color: #4CAF50;
@@ -77,15 +84,32 @@
             background-color: #45a049;
         }
 
-        .filename {
-            text-align: center;
+        /* Make buttons smaller and use arrows */
+        .arrow-button {
             font-size: 18px;
-            padding: 10px;
-            margin-bottom: 10px;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #4CAF50;
+            color: white;
+            border-radius: 50%;
+        }
+
+        .arrow-button:hover {
+            background-color: #45a049;
         }
 
         input[type="file"] {
             display: none;
+        }
+
+        input[type="number"] {
+            width: 100px; /* Make the typing slot wider */
+            font-size: 16px;
+            padding: 5px;
+            text-align: center;
         }
 
     </style>
@@ -106,8 +130,10 @@
         </div>
 
         <div class="controls">
-            <button onclick="changeFile(-1)">Prev</button>
-            <button onclick="changeFile(1)">Next</button>
+            <!-- Arrow buttons -->
+            <button class="arrow-button" onclick="changeFile(-1)">←</button>
+            <input type="number" id="pageNumber" value="1" min="1" onchange="jumpToPage()" oninput="updatePageNumber()">
+            <button class="arrow-button" onclick="changeFile(1)">→</button>
             <button onclick="triggerFileDialog()">Load All Text Files</button>
             <input type="file" id="fileInput" multiple accept=".txt" onchange="loadTextFiles(event)">
         </div>
@@ -136,6 +162,9 @@
 
         // Update the filename display
         document.getElementById("filenameDisplay").innerText = `Currently viewing: ${imagePath}`;
+        
+        // Sync page number with the current index
+        document.getElementById("pageNumber").value = index;
     }
 
     // Function to increment or decrement the current index
@@ -172,6 +201,25 @@
 
         // Notify user that files are loaded
         alert('Text files loaded into memory!');
+    }
+
+    // Function to handle page jump
+    function jumpToPage() {
+        const pageNumber = parseInt(document.getElementById("pageNumber").value);
+        if (!isNaN(pageNumber) && pageNumber >= 1) {
+            currentIndex = pageNumber;
+            loadPreview(currentIndex);
+        } else {
+            alert('Please enter a valid page number.');
+        }
+    }
+
+    // Function to update page number input (for handling edge cases)
+    function updatePageNumber() {
+        const pageNumber = parseInt(document.getElementById("pageNumber").value);
+        if (isNaN(pageNumber) || pageNumber < 1) {
+            document.getElementById("pageNumber").value = 1;
+        }
     }
 
     // Load the initial preview (will show text if loaded)
