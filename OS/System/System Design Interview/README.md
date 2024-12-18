@@ -1,5 +1,22 @@
 # System Design Interview
 
+## Introduction
+
+During the early 2000s to mid-2010s, unconventional interview questions became a hallmark of not only tech companies like Google but also universities aiming to identify top talent. Questions such as the famous "Google Intern Movie" blender question or the "How many ping-pong balls can fit in a plane?" were not intended to test specific technical skills. Instead, they focused on evaluating problem-solving abilities, creativity, logical reasoning, and how individuals approached open-ended challenges.
+
+By the late 2010s, tech companies began moving away from abstract brainteasers, finding them ineffective at predicting real-world success. Instead, they adopted structured processes that are still widely used today, including:
+* **take-home assignments** : to assess practical skills 
+* **system design interviews** : for evaluating architectural thinking
+* **behavioral questions (BQ)** : to gauge interpersonal abilities and cultural fit.
+
+This modern approach balances technical expertise with problem-solving and teamwork skills.
+
+Usually for L4~L6+: 
+
+![](./faang-leveling.webp)
+
+
+
 ## Books
 
 * System Design Interview – An insider's guide by Alex Xu 
