@@ -18,13 +18,13 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
-title: LatticeMage
-email: latticemage@gmail.com
-url: https://lattice.posetmage.com # the base hostname & protocol for your site, e.g. http://example.com
+title: HomunMage
+email: homun@posetmage.com
+url: https://homun.posetmage.com # the base hostname & protocol for your site, e.g. http://example.com
 
 description: Tools
 baseurl: /Tools # the subpath of your site, e.g. /Tools
-repository: latticemage/Tools
+repository: homun/Tools
 
 exclude:
   - Productivity/Converter/EPUB/book1/
