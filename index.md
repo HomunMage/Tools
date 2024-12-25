@@ -11,4 +11,4 @@ HomunMage Tools for Productivity, Coding, ......
 
 ## [OS](./OS/)
 
-## [System Design Interview](https://SystemDesignInterview.github.io)
+## [System Design Interview](/SystemDesignInterview/)
