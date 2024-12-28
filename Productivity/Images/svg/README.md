@@ -25,4 +25,4 @@ result: ![](./concentric_circles.svg)
 
 result: ![](./labeled_triangle.svg)
 
-<script src="https://posetmage.com/assets/js/LoadAsCodeSession.js"></script>
+<script src="https://posetmage.com/cdn/js/LoadAsCodeSession.js"></script>

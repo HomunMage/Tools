@@ -25,4 +25,4 @@ Regedit folder: 電腦\HKEY_CLASSES_ROOT\Directory\shell\VSCode\command
   * <div class="load_as_code_session" data-url="vs.reg">Loading content...</div>
 
 
-<script src="https://posetmage.com/assets/js/LoadAsCodeSession.js"></script>
+<script src="https://posetmage.com/cdn/js/LoadAsCodeSession.js"></script>

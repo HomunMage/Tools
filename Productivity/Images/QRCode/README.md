@@ -1,6 +1,6 @@
 # QR Code Generator
 
-<script src="https://posetmage.com/assets/js/GenQRCode.js" defer></script>
+<script src="https://posetmage.com/cdn/js/GenQRCode.js" defer></script>
 
 <label for="urlInput">Enter URL:</label>
 <input type="text" id="urlInput" placeholder="Enter URL here">

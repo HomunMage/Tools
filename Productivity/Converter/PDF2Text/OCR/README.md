@@ -117,4 +117,4 @@ If you're looking for open-source AI-based OCR solutions that can leverage your 
 
 
 
-<script src="https://posetmage.com/assets/js/LoadAsCodeSession.js"></script>
+<script src="https://posetmage.com/cdn/js/LoadAsCodeSession.js"></script>
