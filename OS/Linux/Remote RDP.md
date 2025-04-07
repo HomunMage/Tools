@@ -1,4 +1,4 @@
-# Remote Desktop Access to Linux on a Secure SSH Tunnel
+# xrdp Remote Desktop Access to Linux on a Secure SSH Tunnel
 
 In this guide, we'll demonstrate how to securely access a Linux PC from a Windows notebook using Remote Desktop Protocol (RDP) over an SSH tunnel. This approach enhances security by using a non-default SSH port and restricting access to critical services. We’ll handle everything from setting up `xrdp` on the Linux PC to configuring SSH port forwarding via the command line.
 
@@ -91,20 +91,13 @@ In this guide, we'll demonstrate how to securely access a Linux PC from a Window
    ```bash
    sudo ufw allow 3390/tcp comment 'Allow SSH on custom port for IPv6'
    ```
-
-6. **Deny Other `xrdp` Connections**:
-   Deny all other incoming connections on port 3389:
-   ```bash
-   sudo ufw deny 3389/tcp
-   ```
-
-7. **Enable `ufw`**:
+5. **Enable `ufw`**:
    Enable the firewall with the configured rules:
    ```bash
    sudo ufw enable
    ```
 
-8. **Verify Firewall Rules**:
+6. **Verify Firewall Rules**:
    Check the status to ensure your rules are applied correctly:
    ```bash
    sudo ufw status verbose
