@@ -1,13 +1,3 @@
-[submodule "_includes"]
-	path = _includes
-	url = https://github.com/PosetMage/Jekyll_includes.git
-	branch = main
-
-[submodule "_layouts"]
-	path = _layouts
-	url = ../homun_layouts.git
-	branch = main
-
 [submodule "OS/Container"]
 	path = OS/Container
 	url = ../Container.git
