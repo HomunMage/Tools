@@ -1,3 +1,8 @@
+[submodule "_layouts"]
+        path = _layouts
+        url = https://github.com/PosetMage/jekyll_layouts.git
+        branch = main
+		
 [submodule "OS/Container"]
 	path = OS/Container
 	url = ../Container.git
