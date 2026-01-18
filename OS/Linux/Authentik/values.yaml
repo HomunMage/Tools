@@ -1,0 +1,27 @@
+# values.yaml
+authentik:
+  secret_key: "xK9mP2vL8nQ4rT6wY1zA3bC5dE7fG0hJ2kM4nP6qR8sT0uV2wX4yZ6aB8cD0eF2g"  # From Step 1
+  
+  postgresql:
+    host: "authentik-postgresql"
+    name: "authentik"
+    user: "authentik"
+    password: "vR8sT0uV2wX4yZ6aB8cD0eF2gH4jK6mN8pQ"  # From Step 4
+
+postgresql:
+  enabled: true
+  auth:
+    username: authentik
+    password: "vR8sT0uV2wX4yZ6aB8cD0eF2gH4jK6mN8pQ"  # Same as above
+    database: authentik
+  primary:
+    persistence:
+      enabled: true
+      size: 8Gi
+
+redis:
+  enabled: true
+
+server:
+  ingress:
+    enabled: false  # We'll use custom ingress
