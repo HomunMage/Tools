@@ -8,7 +8,7 @@
 	url = ../Container.git
 		
 [submodule "Productivity/markbook"]
-	path = Productivity/markbook/
+	path = Productivity/markbook
 	url = ../markbook.git
 
 
